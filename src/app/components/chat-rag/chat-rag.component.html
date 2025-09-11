@@ -1,0 +1,23 @@
+
+<h1>Chat RAG</h1>
+<div class="chat-container">
+  <div class="messages">
+    <div *ngFor="let msg of messages" [ngClass]="msg.role">
+      <strong *ngIf="msg.role === 'user'">Tú:</strong>
+      <strong *ngIf="msg.role === 'bot'">Bot:</strong>
+      <span>{{ msg.text }}</span>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input
+      [(ngModel)]="userQuestion"
+      (keyup.enter)="sendMessage()"
+      placeholder="Escribe tu pregunta..."
+    />
+    <button (click)="sendMessage()" [disabled]="loading">
+      {{ loading ? 'Pensando...' : 'Enviar' }}
+    </button>
+  </div>
+</div>
+
