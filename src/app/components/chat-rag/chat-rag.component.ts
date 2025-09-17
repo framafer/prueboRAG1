@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RagService } from 'src/app/services/rag.service';
+import { RagService } from '../../services/rag.service';
 import { FormsModule } from '@angular/forms';
 
 interface Message {
@@ -30,11 +30,11 @@ export class ChatRagComponent {
 
     // Llamar a la función RAG
     this.ragService.ask(question, 'gemini').subscribe({
-      next: (res) => {
+      next: (res: { answer: string }) => {
         this.messages.push({ role: 'bot', text: res.answer });
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error(err);
         this.messages.push({ role: 'bot', text: '❌ Error al obtener respuesta' });
         this.loading = false;

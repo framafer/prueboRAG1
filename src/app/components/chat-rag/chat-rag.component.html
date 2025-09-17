@@ -1,5 +1,5 @@
 
-<h1>Chat RAG</h1>
+
 <div class="chat-container">
   <div class="messages">
     <div *ngFor="let msg of messages" [ngClass]="msg.role">
@@ -19,5 +19,8 @@
       {{ loading ? 'Pensando...' : 'Enviar' }}
     </button>
   </div>
+
+
+  <app-subida-de-documentos></app-subida-de-documentos>
 </div>
 

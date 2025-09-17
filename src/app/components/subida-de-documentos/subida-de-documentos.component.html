@@ -1,0 +1,15 @@
+<div class="upload-container">
+  <h3>Subir manual a Firestore</h3>
+  <label for="file-input">Seleccionar archivo PDF:</label>
+  <input id="file-input" type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+  <button (click)="procesarPDF()" [disabled]="!selectedFile">Procesar PDF</button>
+
+  <div *ngIf="chunks.length > 0">
+    <h4>Chunks generados:</h4>
+    <ul>
+      <li *ngFor="let c of chunks; let i = index">
+        <strong>Chunk {{ i + 1 }}:</strong> {{ c }}
+      </li>
+    </ul>
+  </div>
+</div>

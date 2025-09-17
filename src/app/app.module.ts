@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatRagComponent } from './components/chat-rag/chat-rag.component';
+import { SubidaDeDocumentosComponent } from './components/subida-de-documentos/subida-de-documentos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatRagComponent
+    ChatRagComponent,
+    SubidaDeDocumentosComponent
   ],
   imports: [
     BrowserModule,

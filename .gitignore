@@ -4,15 +4,15 @@
 /dist
 /tmp
 /out-tsc
+# Only exists if Bazel was run
 /bazel-out
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Node modules
+node_modules
 
 # IDEs and editors
-.idea/
+.vscode
+.idea
 .project
 .classpath
 .c9/
@@ -40,3 +40,15 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Firebase
+.firebase
+*-debug.log
+*-error.log
+firebase-debug*.log
+firebase-debug*.log.*
+
+# Environment files
+.env
+.env.local
+.env.production
