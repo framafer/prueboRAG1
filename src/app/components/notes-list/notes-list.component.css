@@ -1,0 +1,173 @@
+.toolbar {
+  background-color: #1976d2;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.user-email-display {
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.help-button, .logout-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.help-button:hover, .logout-button:hover {
+  background-color: #d32f2f;
+}
+
+.header-text {
+  padding: 2rem;
+  text-align: center;
+}
+
+.info-box {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 1rem 2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.note-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.note-content {
+  margin: 1rem 0;
+}
+
+.content-display {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+}
+
+.note-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-input, .edit-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.edit-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-button {
+  background-color: #ff9800;
+  color: white;
+}
+
+.update-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.summarize-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.summarize-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.add-note-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.new-note-input, .new-note-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.new-note-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.add-button {
+  background-color: #1976d2;
+  color: white;
+  flex: 1;
+}
+
+.ai-button {
+  background-color: #ff9800;
+  color: white;
+  flex: 1;
+}
+
+.ai-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  opacity: 0.9;
+}

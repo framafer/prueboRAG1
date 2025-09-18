@@ -1,0 +1,60 @@
+<div class="toolbar">
+  <span class="user-email-display">Notas de {{ userEmail }}</span>
+  <div class="spacer"></div>
+  <button class="help-button" (click)="goToChat()">Ayuda</button>
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+
+<div class="header-text">
+  <h1>Bienvenido a Notas</h1>
+  <div class="info-box">
+    <p>Seguidamente se presenta la lista de sus Notas. Al final de esta lista tiene la posibilidad de crear Notas nuevas. Puede, incluso, ayudarse de Gemini para crearlas.</p>
+  </div>
+</div>
+
+<div *ngFor="let note of notes; trackBy: trackByFn" class="note-card">
+  <div class="note-header">
+    <div class="note-title" *ngIf="editingNoteId !== note.id">{{ note.title }}</div>
+    <input *ngIf="editingNoteId === note.id" [(ngModel)]="note.title" class="edit-input" placeholder="Título">
+  </div>
+  
+  <div class="note-content">
+    <div *ngIf="editingNoteId !== note.id" class="content-display" [innerHTML]="note.content | formatText"></div>
+    <textarea *ngIf="editingNoteId === note.id" [(ngModel)]="note.content" class="edit-textarea" placeholder="Contenido"></textarea>
+  </div>
+  
+  <div class="note-actions">
+    <div *ngIf="editingNoteId !== note.id">
+      <button class="delete-button" (click)="deleteNote(note.id ?? '')">Borrar</button>
+      <button class="edit-button" (click)="editNote(note)">Editar</button>
+      <button class="summarize-button" (click)="summarizeNote(note)" [disabled]="summarizingNoteId === note.id">
+        <span *ngIf="summarizingNoteId === note.id">Resumiendo...</span>
+        <span *ngIf="summarizingNoteId !== note.id">Resumir</span>
+      </button>
+    </div>
+    <div *ngIf="editingNoteId === note.id">
+      <button class="update-button" (click)="updateEditedNote(note)">Actualizar</button>
+      <button class="cancel-button" (click)="cancelEdit(note.id ?? '')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div class="add-note-card">
+  <h3>Crear Nueva Nota</h3>
+  <input [(ngModel)]="currentNote.title" placeholder="Título" class="new-note-input">
+  <textarea [(ngModel)]="currentNote.content" placeholder="Contenido" class="new-note-textarea"></textarea>
+  <div class="button-group">
+    <button class="add-button" (click)="addNewNote()">Añadir Nota</button>
+    <button class="ai-button" (click)="generateNoteWithAI()" [disabled]="generatingNote">
+      <span *ngIf="generatingNote">Generando...</span>
+      <span *ngIf="!generatingNote">Generar Nota con IA</span>
+    </button>
+  </div>
+</div>
+
+<app-summary-modal 
+  [isVisible]="showSummaryModal" 
+  [summary]="currentSummary" 
+  (replace)="onSummaryReplace($event)" 
+  (cancel)="closeSummaryModal()">
+</app-summary-modal>

@@ -1,6 +1,10 @@
 
 
 <div class="chat-container">
+  <div class="chat-header">
+    <button class="back-button" (click)="goToNotes()">Volver a Notas</button>
+    <h2>Chat RAG - Ayuda</h2>
+  </div>
   <div class="messages">
     <div *ngFor="let msg of messages" [ngClass]="msg.role">
       <strong *ngIf="msg.role === 'user'">Tú:</strong>

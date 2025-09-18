@@ -1,3 +1,11 @@
-
+<!-- <nav class="navbar" *ngIf="authService.user$ | async as user">
+  <div class="nav-content">
+    <h1>RAG System</h1>
+    <div class="nav-actions">
+      <span>Bienvenido, {{user.email}}</span>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav> -->
 
 <router-outlet></router-outlet>

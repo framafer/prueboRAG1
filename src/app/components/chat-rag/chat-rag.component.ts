@@ -41,4 +41,8 @@ export class ChatRagComponent {
       }
     });
   }
+
+  goToNotes() {
+    window.location.href = '/notes';
+  }
 }

@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+  <span class="user-email-display">Notas de {{ userEmail }}</span>
+  <span class="spacer"></span>
+  <button mat-button color="accent" routerLink="/chat">Ayuda</button>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div class="header-text">
+  <h1>Bienvenido a Notas</h1>
+  <div class="info-box">
+    <p>Seguidamente se presenta la lista de sus Notas. Al final de esta lista tiene la posibilidad de crear Notas nuevas. Puede, incluso, ayudarse de Gemini para crearlas.</p>
+  </div>
+</div>
+@for(note of notes; track note.id) {
+  <mat-card  class="note-card" [ngClass]="{'is-editing': editingNoteId === note.id}">
+  <mat-card-header>
+    <mat-card-title class="note-title">
+      @if (editingNoteId === note.id) {
+        <mat-form-field appearance="fill" class="edit-in-place">
+          <input matInput [(ngModel)]="note.title" title="Editar Título de la Nota">
+        </mat-form-field>
+      } @else {
+        {{ note.title }}
+      }
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="note-content">
+    @if (editingNoteId === note.id) {
+      <mat-form-field appearance="fill" class="edit-in-place">
+        <textarea matInput [(ngModel)]="note.content" cdkTextareaAutosize cdkAutosizeMinRows="1" title="Editar Contenido de la Nota"></textarea>
+      </mat-form-field>
+    } @else {
+      <markdown [data]="note.content"></markdown>
+    }
+  </mat-card-content>
+  <mat-card-actions>
+    @if (editingNoteId === note.id) {
+      <button mat-raised-button color="primary" (click)="updateEditedNote(note)">Actualizar</button>
+      <button mat-raised-button (click)="cancelEdit(note.id ?? '')">Cancelar</button>
+    } @else {
+      <button mat-raised-button color="warn" (click)="deleteNote(note.id ?? '')">Borrar</button>
+      <button mat-raised-button color="accent" (click)="editNote(note)">Editar</button>
+      <button mat-raised-button class="light-blue-button" (click)="summarizeNote(note)" [disabled]="summarizingNoteId === note.id">
+        @if(summarizingNoteId === note.id) {
+          <mat-spinner [diameter]="20"></mat-spinner>
+        } @else {
+          Resumir
+        }
+      </button>
+    }
+  </mat-card-actions>
+</mat-card>
+}
+
+
+<mat-card class="add-note-card">
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="currentNote.title" placeholder="Introduce aquí el título" title="Note Title">
+    </mat-form-field>
+
+    <p></p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contenido</mat-label>
+      <textarea matInput [(ngModel)]="currentNote.content" title="Note Content" placeholder="Introduce aquí el contenido de la Nota"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addNewNote()">Añadir Nota</button>
+    <button mat-raised-button color="accent" (click)="generateNoteWithAI()" [disabled]="generatingNote">
+      @if(generatingNote) {
+        <mat-spinner [diameter]="20"></mat-spinner>
+      } @else {
+        Generar Nota con IA
+      }
+    </button>

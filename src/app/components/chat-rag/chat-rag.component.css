@@ -9,6 +9,33 @@
   background: #fafafa;
 }
 
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.back-button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.back-button:hover {
+  background-color: #1565c0;
+}
+
+.chat-header h2 {
+  margin: 0;
+  color: #333;
+}
+
 .messages {
   flex-grow: 1;
   overflow-y: auto;

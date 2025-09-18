@@ -1,5 +1,5 @@
 <div class="upload-container">
-  <h3>Subir manual a Firestore</h3>
+  <h3>Añadir archivo pdf al 'RAG' para crear contexto</h3>
   <label for="file-input">Seleccionar archivo PDF:</label>
   <input id="file-input" type="file" (change)="onFileSelected($event)" accept="application/pdf" />
   <button (click)="procesarPDF()" [disabled]="!selectedFile">Procesar PDF</button>
